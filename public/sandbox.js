@@ -1,18 +1,16 @@
 "use strict";
-var age = 25;
-age = true;
-console.log(age);
-age = 'hello';
-console.log(age);
-age = { name: 'luigi' };
-console.log(age);
-var mixed = [];
-mixed.push(5);
-mixed.push('mario');
-mixed.push(false);
-console.log(mixed);
-var ninja;
-ninja = { name: 'yoshi', age: 30 };
-console.log(ninja);
-ninja = { name: 25, age: 'yoshi' };
-console.log(ninja);
+var greet;
+greet = function () {
+    console.log('hello, world');
+};
+var add = function (a, b, c) {
+    if (c === void 0) { c = 10; }
+    console.log(a + b);
+    console.log(c);
+};
+add(5, 10, 20);
+var minus = function (a, b) {
+    return a - b;
+};
+var result = minus(10, 7);
+console.log(result);

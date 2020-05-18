@@ -1,22 +1,19 @@
-let age: any = 25;
+let greet: Function;
 
-age = true;
-console.log(age);
-age = 'hello';
-console.log(age);
-age = { name: 'luigi' };
-console.log(age);
+greet = () => {
+  console.log('hello, world');
+}
 
-let mixed: any[] = [];
-mixed.push(5);
-mixed.push('mario');
-mixed.push(false);
-console.log(mixed);
+const add = (a: number, b: number, c: number | string = 10) => {
+  console.log(a + b);
+  console.log(c);
+}
 
-let ninja: { name: any, age: any };
+add(5, 10, 20);
 
-ninja = { name: 'yoshi', age: 30 }
-console.log(ninja);
+const minus = (a: number, b: number): number => {
+  return a - b;
+}
 
-ninja = { name: 25, age: 'yoshi' }
-console.log(ninja);
+let result = minus(10, 7);
+console.log(result);
