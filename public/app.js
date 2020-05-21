@@ -1,34 +1,19 @@
-"use strict";
-// classes
-var Invoice = /** @class */ (function () {
-    // readonly client: string;
-    // private details: string;
-    // public amount: number;
-    function Invoice(client, details, amount) {
-        this.client = client;
-        this.details = details;
-        this.amount = amount;
-    }
-    Invoice.prototype.format = function () {
-        return this.client + " owes $" + this.amount + " for " + this.details;
-    };
-    return Invoice;
-}());
-var invoiceOne = new Invoice('Raphael', 'work on the Mario Website', 250);
-var invoiceTwo = new Invoice('Mario', 'work on the Luigi Website', 400);
-var invoices = [];
+import { Invoice } from './classes/Invoice.js';
+const invoiceOne = new Invoice('Raphael', 'work on the Mario Website', 250);
+const invoiceTwo = new Invoice('Mario', 'work on the Luigi Website', 400);
+let invoices = [];
 invoices.push(invoiceOne);
 invoices.push(invoiceTwo);
-invoices.forEach(function (invoice) {
+invoices.forEach(invoice => {
     console.log(invoice.client, invoice.amount, invoice.format());
 });
-var form = document.querySelector('.new-item-form');
+const form = document.querySelector('.new-item-form');
 // inputs
-var type = document.querySelector('#type');
-var toFrom = document.querySelector('#tofrom');
-var details = document.querySelector('#details');
-var amount = document.querySelector('#amount');
-form.addEventListener('submit', function (e) {
+const type = document.querySelector('#type');
+const toFrom = document.querySelector('#tofrom');
+const details = document.querySelector('#details');
+const amount = document.querySelector('#amount');
+form.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log(type.value, toFrom.value, details.value, amount.valueAsNumber);
 });
