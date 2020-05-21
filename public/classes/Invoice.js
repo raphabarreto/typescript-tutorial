@@ -1,4 +1,3 @@
-// classes
 export class Invoice {
     constructor(client, details, amount) {
         this.client = client;

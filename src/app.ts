@@ -1,35 +1,18 @@
 import { Invoice } from './classes/Invoice.js';
+import { Payment } from './classes/Payments.js';
+import { HasFormatter } from './interfaces/HasFormatter.js';
 
-// interfaces
-export interface IsPerson {
-  name: string;
-  age?: number;
-  speak(a: string): void;
-  spend(a: number): number;
-}
+let docOne: HasFormatter;
+let docTwo: HasFormatter;
 
-const me: IsPerson = {
-  name: 'shaun',
-  //age: 30,
-  speak(text: string): void {
-    console.log(text);
-  },
-  spend(amount: number): number {
-    console.log('I spent ', amount);
-    return amount;
-  },
-};
+docOne = new Invoice('yoshi', 'web work', 250);
+docTwo = new Payment('mario', 'plumbing', 200);
 
-const greetPerson = (person: IsPerson): void => {
-  console.log('hello ', person.name);
-}
+let docs: HasFormatter[] = [];
+docs.push(docOne);
+docs.push(docTwo);
 
-greetPerson(me);
-console.log(me);
-
-me.speak('hello, world');
-
-
+// console.log(docs)
 
 const form = document.querySelector('.new-item-form') as HTMLFormElement;
 
@@ -41,10 +24,12 @@ const amount = document.querySelector('#amount') as HTMLInputElement;
 
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault();
-  console.log(
-    type.value,
-    toFrom.value,
-    details.value,
-    amount.valueAsNumber
-  )
-})
+
+  let doc: HasFormatter;
+  if (type.value === 'invoice') {
+    doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+  } else {
+    doc = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+  }
+
+  console.log(doc);
