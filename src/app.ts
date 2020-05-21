@@ -1,15 +1,35 @@
 import { Invoice } from './classes/Invoice.js';
 
-const invoiceOne = new Invoice('Raphael', 'work on the Mario Website', 250);
-const invoiceTwo = new Invoice('Mario', 'work on the Luigi Website', 400);
+// interfaces
+export interface IsPerson {
+  name: string;
+  age?: number;
+  speak(a: string): void;
+  spend(a: number): number;
+}
 
-let invoices: Invoice[] = [];
-invoices.push(invoiceOne);
-invoices.push(invoiceTwo);
+const me: IsPerson = {
+  name: 'shaun',
+  //age: 30,
+  speak(text: string): void {
+    console.log(text);
+  },
+  spend(amount: number): number {
+    console.log('I spent ', amount);
+    return amount;
+  },
+};
 
-invoices.forEach(invoice => {
-  console.log(invoice.client, invoice.amount, invoice.format());
-})
+const greetPerson = (person: IsPerson): void => {
+  console.log('hello ', person.name);
+}
+
+greetPerson(me);
+console.log(me);
+
+me.speak('hello, world');
+
+
 
 const form = document.querySelector('.new-item-form') as HTMLFormElement;
 
